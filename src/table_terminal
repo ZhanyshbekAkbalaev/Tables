@@ -1,0 +1,113 @@
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Пароль пользователя postgres:
+psql (15.1)
+ПРЕДУПРЕЖДЕНИЕ: Кодовая страница консоли (866) отличается от основной
+                страницы Windows (1251).
+                8-битовые (русские) символы могут отображаться некорректно.
+                Подробнее об этом смотрите документацию psql, раздел
+                "Notes for Windows users".
+Введите "help", чтобы получить справку.
+
+postgres=# \c ten_tables
+Вы подключены к базе данных "ten_tables" как пользователь "postgres".
+ten_tables=# \d
+                     ╤яшёюъ юЄэю°хэшщ
+ ╤їхьр  |       ╚ь         |        ╥шя         | ┬ырфхыхЎ
+--------+------------------+--------------------+----------
+ public | astronaut        | ЄрсышЎр            | postgres
+ public | astronaut_id_seq | яюёыхфютрЄхы№эюёЄ№ | postgres
+ public | boss             | ЄрсышЎр            | postgres
+ public | boss_id_seq      | яюёыхфютрЄхы№эюёЄ№ | postgres
+ public | cafe             | ЄрсышЎр            | postgres
+ public | cafe_id_seq      | яюёыхфютрЄхы№эюёЄ№ | postgres
+ public | car              | ЄрсышЎр            | postgres
+ public | car_id_seq       | яюёыхфютрЄхы№эюёЄ№ | postgres
+ public | clent            | ЄрсышЎр            | postgres
+ public | clent_id_seq     | яюёыхфютрЄхы№эюёЄ№ | postgres
+ public | country          | ЄрсышЎр            | postgres
+ public | country_id_seq   | яюёыхфютрЄхы№эюёЄ№ | postgres
+ public | dish             | ЄрсышЎр            | postgres
+ public | dish_id_seq      | яюёыхфютрЄхы№эюёЄ№ | postgres
+ public | driver           | ЄрсышЎр            | postgres
+ public | driver_id_seq    | яюёыхфютрЄхы№эюёЄ№ | postgres
+ public | office           | ЄрсышЎр            | postgres
+ public | office_id_seq    | яюёыхфютрЄхы№эюёЄ№ | postgres
+ public | planet           | ЄрсышЎр            | postgres
+ public | planet_id_seq    | яюёыхфютрЄхы№эюёЄ№ | postgres
+(20 ёЄЁюъ)
+
+
+ten_tables=# SELECT * FROM boss;
+ id | first_name |  last_name  | office_id
+----+------------+-------------+-----------
+  1 | Kuban      | Kelsinbekov |         1
+(1 ёЄЁюър)
+
+
+ten_tables=# SELECT * FROM astronaut;
+ id | first_name | last_name | date_of_birth | gender | planet_id
+----+------------+-----------+---------------+--------+-----------
+  1 | Adilet     | Ismailov  | 2000-03-02    | MALE   |         1
+(1 ёЄЁюър)
+
+
+ten_tables=# SELECT * FROM cafe;
+ id |      name
+----+-----------------
+  1 | Mahmut Kashkari
+  2 | Vostok
+(2 ёЄЁюъш)
+
+
+ten_tables=# SELECT * FROM car;
+ id | model | colour | date_of_issue | country_id
+----+-------+--------+---------------+------------
+  1 | LEXUS | RED    | 2020-04-09    |          1
+(1 ёЄЁюър)
+
+
+ten_tables=# SELECT * FROM clent;
+ id |   name   |    surname    | cafe_id | dish_id
+----+----------+---------------+---------+---------
+  1 | Muhammed | Kurbanov      |       1 |       1
+  2 | Orozali  | Jigitali uulu |       2 |       2
+(2 ёЄЁюъш)
+
+
+ten_tables=# SELECT * FROM country ;
+ id | name
+----+------
+  1 | USA
+(1 ёЄЁюър)
+
+
+ten_tables=# SELECT * FROM dish;
+ id |  name  | price | cafe_id
+----+--------+-------+---------
+  1 | Lagman |   150 |       2
+  2 | Plof   |   180 |       1
+(2 ёЄЁюъш)
+
+
+ten_tables=# SELECT * FROM driver;
+ first_name | last_name | age | car_id | id
+------------+-----------+-----+--------+----
+ Janyshbek  | Akbalaev  |  19 |      1 |  1
+(1 ёЄЁюър)
+
+
+ten_tables=# SELECT * FROM office;
+ id |      name
+----+----------------
+  1 | Peaksoft house
+(1 ёЄЁюър)
+
+
+ten_tables=# SELECT * FROM planet;
+ id | name | kilometer
+----+------+-----------
+  1 | MARS |  55000000
+(1 ёЄЁюър)

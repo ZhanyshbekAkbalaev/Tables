@@ -1,0 +1,127 @@
+CREATE TABLE dish(
+    id BIGSERIAL PRIMARY KEY ,
+    name VARCHAR(50) NOT NULL ,
+    price INT NOT NULL
+);
+SELECT * FROM dish;
+
+INSERT INTO dish(name, price)
+VALUES ('Lagman',150),
+       ('Plof',180);
+
+
+CREATE TABLE cafe(
+    id BIGSERIAL PRIMARY KEY ,
+    name VARCHAR(50) NOT NULL ,
+    town VARCHAR(50)NOT NULL ,
+    dish_id INT REFERENCES dish(id));
+SELECT * FROM cafe;
+DELETE FROM cafe WHERE id=4;
+
+INSERT INTO cafe(name, town, dish_id)
+VALUES ('Mahmut Kashkari','BISHKEK',1),
+       ('Uzbekstan','OSH',2);
+  []
+DELETE FROM cafe WHERE id=2;
+
+SELECT * FROM cafe;
+
+CREATE TABLE client(
+    id BIGSERIAL PRIMARY KEY ,
+    surname VARCHAR(100) NOT NULL ,
+    money INT NOT NULL ,
+    gender VARCHAR(6) NOT NULL ,
+    from_which_city VARCHAR(50) NOT NULL,
+    cafe_id INT REFERENCES cafe(id));
+INSERT INTO client(surname, money, gender, from_which_city, cafe_id)
+VALUES ('Akhmatov Omurbek',700,'MALE','BATKEN',5),
+       ('Adylova Atir',800,'FEMALE','NARYN',6);
+SELECT * FROM client;
+SELECT * FROM cafe;
+TRUNCATE TABLE cafe;
+
+CREATE TABLE laptop(
+    id BIGSERIAL PRIMARY KEY,
+    model VARCHAR(50) NOT NULL,
+    memory INT NOT NULL,
+    price INT NOT NULL);
+INSERT INTO laptop(model, memory, price)
+VALUES ('Lenovo',128,40000),
+       ('MacBook',256,90000),
+       ('Linux',64,35000),
+       ('HP',512,45000);
+CREATE TABLE programmer_students(
+    id BIGSERIAL PRIMARY KEY ,
+    surname VARCHAR(50) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    laptop_id INT REFERENCES laptop(id));
+INSERT INTO programmer_students(surname, name, laptop_id)
+VALUES('Akbalaev','Janyshbek',1),('Ismailov','Adilet',2),('Mamirayim kyzy','Nurisa',3),('Kelsinbekov','Kuban',4);
+INSERT INTO programmer_students(surname, name)
+VALUES ('Andrei','Aleksei');
+
+SELECT * FROM programmer_students;
+SELECT * FROM laptop;
+
+CREATE TABLE question(
+    id BIGSERIAL PRIMARY KEY ,
+    who_is_asking VARCHAR(50) NOT NULL,
+    the_name_of_the_query VARCHAR(50) NOT NULL,
+    what_s_question VARCHAR(200) NOT NULL,
+    question_time INT NOT NULL);
+INSERT INTO question(who_is_asking, the_name_of_the_query, what_s_question, question_time)
+VALUES ('Muhammed','java','How many types are there in java?',2);
+
+CREATE TABLE option(
+id BIGSERIAL PRIMARY KEY ,
+ansver VARCHAR(500) NOT NULL,
+question_id INT REFERENCES question(id));
+
+DROP TABLE option
+select * from question where who_is_asking = 'Muhammed';
+
+INSERT INTO option(ansver, question_id)
+VALUES('JAVA TWO TYPES (1 primitive type, 2 reference types)',1);
+SELECT * FROM question;
+SELECT * FROM option;
+
+UPDATE question SET who_is_asking = 'Aijamal eje' where who_is_asking = 'Muhammed';
+SELECT * FROM question;
+
+CREATE TABLE phones(
+    id BIGSERIAL PRIMARY KEY ,
+    model VARCHAR(30) NOT NULL,
+    price INT NOT NULL,
+    momery INT NOT NULL,
+    colour VARCHAR(50) NOT NULL,
+    camera INT NOT NULL,
+    fingerprints INT REFERENCES exist_or_not(id));
+
+INSERT INTO phones(model, price, momery, colour, camera, fingerprints)
+VALUES ('Iphone',30000,128,'RED',2,2),
+       ('Samsung Galaxy A22',20000,64,'White',4,1);
+
+    CREATE TABLE persons(
+        id BIGSERIAL PRIMARY KEY ,
+        name VARCHAR(50) NOT NULL,
+        last_name VARCHAR(50) NOT NULL,
+        gender VARCHAR(6) NOT NULL,
+        cars VARCHAR(50) ,
+        phones_id INT REFERENCES phones(id),
+        room VARCHAR(13),
+        email VARCHAR(50));
+
+    INSERT INTO persons(name, last_name, gender, cars, phones_id,room,email)
+VALUES ('Janyshbek','Akbalaev','MALE','Lexus',1,'+996505550574','janyshbek@gmail.com');
+INSERT INTO persons(name, last_name, gender, phones_id, room, email) VALUES
+       ('Jumagul','Aitbaieva','FEMALE',2,'+996707490216','jumagul@gmail.com');
+
+CREATE TABLE exist_or_not(
+    id BIGSERIAL PRIMARY KEY ,
+    yes_no VARCHAR(20) NOT NULL);
+
+INSERT INTO exist_or_not(yes_no)
+VALUES ('Exist'),
+       ('no');
+
+SELECT * FROM exist_or_not;
